@@ -19,14 +19,13 @@
 
 1) <a href='https://www.staticpi.com/' target='_blank' rel='noopener noreferrer'>staticPi</a> - simple, secure, messaging service
 2) <a href='https://docker.com/' target='_blank' rel='noopener noreferrer'>Docker</a> - container runtime
-3) <a href='https://gnupg.org/' target='_blank' rel='noopener noreferrer'>gpg</a> - enable encryptions of database backups
 
 
 | directory | reason|
 | --- | --- |
 |```/srv/backup/mealpedant```			| Location of backups |
-|```~/mealpeant_backup/```				| Location of node client|
-|```~/mealpedant_backup/client/.env```	| enviromental variables, make sure in production mode|
+|```~/mealpeant_backup/```				| Location of client|
+|```~/mealpedant_backup/client/.env```	| environmental variables|
 |```~/mealpeant_backup/logs```			| Location of logs |
 
 
