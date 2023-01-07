@@ -27,6 +27,4 @@ RUN wget https://github.com/mrjackwills/mealpedant_backup_server/releases/downlo
 
 USER ${DOCKER_APP_USER}
 
-COPY --chown=${DOCKER_APP_USER}:${DOCKER_APP_GROUP} mealpedant_backup_server /app
-
 CMD [ "/app/mealpedant_backup_server" ]
