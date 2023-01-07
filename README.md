@@ -45,7 +45,8 @@ cross build --target arm-unknown-linux-gnueabihf --release
 cross build --target arm-unknown-linux-musleabihf --release
 
 # alpine docker - x86 musl, aka server
-cross build --target x86_64-unknown-linux-musl
+cross build --target x86_64-unknown-linux-musl --release
+
 ```
 ## Cargo watch
 

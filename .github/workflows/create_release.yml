@@ -22,9 +22,10 @@ jobs:
       - name: install cross
         run: cargo install cross --git https://github.com/cross-rs/cross
 
-      # Build for linux x85 musk, aka alpine container
+      # Build for linux x86 musl, aka alpine container
       - name: build x86_64-unknown-linux-musl
         run: cross build --target x86_64-unknown-linux-musl --release
+
       # Compress ouput into tar
       - name: compress armv6 binary
         run: tar -C target/x86_64-unknown-linux-musl/release -czf ./mealpedant_backup_server_linux_x86_musl.tar.gz mealpedant_backup_server
