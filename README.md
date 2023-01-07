@@ -13,6 +13,7 @@
 <p align="center">
 	Built in <a href='https://www.rust-lang.org/' target='_blank' rel='noopener noreferrer'>Rust</a>,
 	on <a href='https://docker.com' target='_blank' rel='noopener noreferrer'> Docker</a>
+	<br>
 	see the accompanying <a href='https://www.github.com/mrjackwills/mealpedant_backup_pi' target='_blank' rel='noopener noreferrer'>pi client</a>
 </p>
 
@@ -36,7 +37,7 @@
 ## Build
 
 ```bash
-# alpine docker - x86 musl, aka server
+# alpine docker - x86 musl
 cross build --target x86_64-unknown-linux-musl --release
 
 ```
