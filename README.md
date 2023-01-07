@@ -13,6 +13,7 @@
 <p align="center">
 	Built in <a href='https://www.rust-lang.org/' target='_blank' rel='noopener noreferrer'>Rust</a>,
 	on <a href='https://docker.com' target='_blank' rel='noopener noreferrer'> Docker</a>
+	see the accompanying <a href='https://www.github.com/mrjackwills/mealpedant_backup_pi' target='_blank' rel='noopener noreferrer'>pi client</a>
 </p>
 
 ### Required software
