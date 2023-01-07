@@ -18,7 +18,9 @@ use word_art::Intro;
 use ws::open_connection;
 
 fn setup_tracing(app_env: &AppEnv) {
-    tracing_subscriber::fmt().with_max_level(app_env.log_level).init();
+    tracing_subscriber::fmt()
+        .with_max_level(app_env.log_level)
+        .init();
 }
 
 #[tokio::main]
