@@ -60,7 +60,7 @@ impl WSSender {
         all_files.sort();
 
         if let Some(file_name) = all_files.last() {
-            let file_to_send = format!("{}/{}", &self.app_envs.location_backup, file_name);
+            let file_to_send = format!("{}/{file_name}", &self.app_envs.location_backup);
             let data_to_send = BackupData {
                 file_as_b64: encode(fs::read(file_to_send).await?),
                 file_name: file_name.clone(),

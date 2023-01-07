@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mealpedant_backup_server:
-    image: mealpedant_backup_server:0.0.1
+    image: mealpedant_backup_server:0.0.2
     build:
       context: .
       dockerfile: Dockerfile
@@ -11,7 +11,6 @@ services:
         - DOCKER_TIME_CONT=${DOCKER_TIME_CONT}
         - DOCKER_TIME_CITY=${DOCKER_TIME_CITY}
     container_name: mealpedant_backup_server
-    env_file: .env
     volumes:
       - /srv/backup/mealpedant:/backups:ro
       - $HOME/mealpedant_backup/.env:/app_env/.env:ro

@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-	<h1 align="center">mealpedant backup server</h1>
+	<h1 align="center">mealpedant_backup server</h1>
 </p>
 
 <p align="center">
@@ -12,12 +12,14 @@
 
 <p align="center">
 	Built in <a href='https://www.rust-lang.org/' target='_blank' rel='noopener noreferrer'>Rust</a>,
-	on <a href='https://docker.com' target='_blank' rel='noopener noreferrer'> Docker</a>
+	for <a href='https://docker.com' target='_blank' rel='noopener noreferrer'> Docker</a>
+	<br>
+	see the accompanying <a href='https://www.github.com/mrjackwills/mealpedant_backup_pi' target='_blank' rel='noopener noreferrer'>pi client</a>
 </p>
 
 ### Required software
 
-1) <a href='https://www.staticpi.com/' target='_blank' rel='noopener noreferrer'>staticPi</a> - simple, secure, messaging service
+1) <a href='https://www.staticpi.com/' target='_blank' rel='noopener noreferrer'>staticPi</a> simple, secure, messaging service
 2) <a href='https://docker.com/' target='_blank' rel='noopener noreferrer'>Docker</a> - container runtime
 
 
@@ -25,27 +27,19 @@
 | --- | --- |
 |```/srv/backup/mealpedant```			| Location of backups |
 |```~/mealpeant_backup/```				| Location of client|
-|```~/mealpedant_backup/client/.env```	| environmental variables|
+|```~/mealpedant_backup/.env```			| environmental variables|
 |```~/mealpeant_backup/logs```			| Location of logs |
 
 
 ## Run step
 1) ```./run.sh``` build, or re-build, docker container
 
-
-# Readme
-
-## Build for pi
+## Build
 
 ```bash
-# ubuntu [docker]
-cross build --target arm-unknown-linux-gnueabihf --release
+# alpine docker - x86 musl
+cross build --target x86_64-unknown-linux-musl --release
 
-# alpine docker - armv7-unknown-linux-gnueabihf aka pi zero w
-cross build --target arm-unknown-linux-musleabihf --release
-
-# alpine docker - x86 musl, aka server
-cross build --target x86_64-unknown-linux-musl
 ```
 ## Cargo watch
 
