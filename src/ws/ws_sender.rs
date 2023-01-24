@@ -1,4 +1,4 @@
-use base64::encode;
+use base64::{engine, Engine};
 use futures_util::lock::Mutex;
 use futures_util::SinkExt;
 use std::sync::Arc;
@@ -62,7 +62,8 @@ impl WSSender {
         if let Some(file_name) = all_files.last() {
             let file_to_send = format!("{}/{file_name}", &self.app_envs.location_backup);
             let data_to_send = BackupData {
-                file_as_b64: encode(fs::read(file_to_send).await?),
+                file_as_b64: engine::general_purpose::STANDARD
+                    .encode(fs::read(file_to_send).await?),
                 file_name: file_name.clone(),
             };
             let response = Response::BackupData(data_to_send);
