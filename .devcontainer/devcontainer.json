@@ -21,7 +21,7 @@
 		"source=/dev/shm,target=/dev/shm,type=bind"
 	],
 
-	"postCreateCommand": "cargo install cross",
+	"postCreateCommand": "cargo install cross typos-cli",
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
