@@ -26,15 +26,14 @@ impl WSSender {
     pub async fn on_text(&mut self, message: String) {
         if let Some(data) = to_struct(&message) {
             match data {
-                MessageValues::Invalid(error) => error!("{:?}", error),
+                MessageValues::Invalid(error) => error!("{error:?}"),
                 MessageValues::Valid(message, unique) => match message {
                     ParsedMessage::Backup => {
                         // Log errors, else just ignore
                         match Self::send_backup(self, unique).await {
                             Ok(_) => trace!("backup sent"),
                             Err(e) => {
-                                error!(%e);
-                                error!("error in send_backup");
+                                error!("send_backup::{e}");
                             }
                         }
                     }
@@ -83,7 +82,7 @@ impl WSSender {
             .await
         {
             Ok(_) => trace!("Message sent"),
-            Err(e) => error!("send_ws_response::SEND-ERROR::{:?}", e),
+            Err(e) => error!("send_ws_response::SEND-ERROR::{e}"),
         }
     }
 
