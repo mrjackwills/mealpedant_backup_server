@@ -526,7 +526,7 @@ dependencies = [
 
 [[package]]
 name = "mealpedant_backup_server"
-version = "0.0.2"
+version = "0.0.3"
 dependencies = [
  "base64 0.21.0",
  "dotenvy",
