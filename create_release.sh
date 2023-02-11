@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # rust create_release
-# v0.2.1
+# v0.2.7
+
 
 PACKAGE_NAME='mealpedant_backup_server'
 STAR_LINE='****************************************'
@@ -107,15 +108,15 @@ update_release_body_and_changelog () {
 	echo -e "${RELEASE_BODY_ADDITION}\n\nsee <a href='${GIT_REPO_URL}/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details" > .github/release-body.md
 
 	# Add subheading with release version and date of release
-	echo -e "# <a href='${GIT_REPO_URL}/releases/tag/${NEW_TAG_WITH_V}'>${NEW_TAG_WITH_V}</a>\n${DATE_SUBHEADING}${CHANGELOG_ADDITION}$(cat CHANGELOG.md)" > ./CHANGELOG.md
+	echo -e "# <a href='${GIT_REPO_URL}/releases/tag/${NEW_TAG_WITH_V}'>${NEW_TAG_WITH_V}</a>\n${DATE_SUBHEADING}${CHANGELOG_ADDITION}$(cat CHANGELOG.md)" > CHANGELOG.md
 
 	# Update changelog to add links to commits [hex:8](url_with_full_commit)
 	# "[aaaaaaaaaabbbbbbbbbbccccccccccddddddddd]" -> "[aaaaaaaa](https:/www.../commit/aaaaaaaaaabbbbbbbbbbccccccccccddddddddd),"
 	sed -i -E "s=(\s)\[([0-9a-f]{8})([0-9a-f]{32})\]= [\2](${GIT_REPO_URL}/commit/\2\3)=g" ./CHANGELOG.md
 
 	# Update changelog to add links to closed issues - comma included!
-	# "closes #1" -> "closes [#1](https:/www.../issues/1)""
-	sed -i -r -E "s=closes \#([0-9]+)=closes [#\1](${GIT_REPO_URL}/issues/\1)=g" ./CHANGELOG.md
+	# "closes [#1]" -> "closes [#1](https:/www.../issues/1)""
+	sed -i -r -E "s=closes \[#([0-9]+)\]=closes [#\1](${GIT_REPO_URL}/issues/\1)=g" ./CHANGELOG.md
 }
 
 # update version in cargo.toml + docker-compose.yml, to match selected current version
@@ -182,6 +183,7 @@ ask_continue () {
 
 # Build target as github action would
 cargo_build () {
+	echo -e "\n${GREEN}cross build --target x86_64-unknown-linux-musl --release${RESET}"
 	cross build --target x86_64-unknown-linux-musl --release
 	ask_continue
 }
@@ -199,19 +201,22 @@ release_continue () {
 }
 
 check_typos () {
-	echo -e "\n${PURPLE}checking for typos${RESET}"
+	echo -e "\n${YELLOW}checking for typos${RESET}"
 	typos
 	ask_continue
 }
 
 # Full flow to create a new release
 release_flow() {
+	
 	check_typos
 
 	check_git
 	get_git_remote_url
+
 	cargo_test
 	cargo_build
+
 	cd "${CWD}" || error_close "Can't find ${CWD}"
 	check_tag
 	
@@ -230,7 +235,10 @@ release_flow() {
 	
 	echo "cargo fmt"
 	cargo fmt
-	
+
+	echo -e "\n${PURPLE}cargo check${RESET}"
+	cargo check
+
 	release_continue "git add ."
 	git add .
 
@@ -238,13 +246,9 @@ release_flow() {
 	git commit -m "chore: release ${NEW_TAG_WITH_V}"
 
 	release_continue "git checkout main"
+	echo -e "git merge --no-ff \"${RELEASE_BRANCH}\" -m \"chore: merge ${RELEASE_BRANCH} into main\"" 
 	git checkout main
-
-	release_continue "git merge --no-ff \"${RELEASE_BRANCH}\" -m \"chore: merge ${RELEASE_BRANCH} into main\"" 
 	git merge --no-ff "$RELEASE_BRANCH" -m "chore: merge ${RELEASE_BRANCH} into main"
-
-	echo -e "\n${PURPLE}cargo check${RESET}\n"
-	cargo check
 
 	release_continue "git tag -am \"${RELEASE_BRANCH}\" \"$NEW_TAG_WITH_V\""
 	git tag -am "${RELEASE_BRANCH}" "$NEW_TAG_WITH_V"
@@ -255,7 +259,7 @@ release_flow() {
 	release_continue "git checkout dev"
 	git checkout dev
 
-	release_continue "git merge --no-ff main -m 'chore: merge main into dev'"
+	release_continue "git merge --no-ff main -m \"chore: merge main into dev\""
 	git merge --no-ff main -m 'chore: merge main into dev'
 
 	release_continue "git push origin dev"
