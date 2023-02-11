@@ -1,16 +1,15 @@
-### 2023-02-02
+### 2023-02-11
 
 ### Chores
-+ update dependencies, [17bb5fc3789b6121e1a0f877636df30eb6ace6f7]
-+ create_release semver regex, [58071d7db20faf7f6f463051cc2594e8431303fe]
++ dev container updated, [95cd3ec06a0df0499b87132420a3c411996824df]
++ dependencies updated, [7affdbcef8173adf9e0b59c048f709744dc4523b]
++ create_release v0.2.7, [d02c0fbaa9ed287a8647d17dd434391d28dc066f]
 
-### Features
-+ scratch docker container, [7d2682e5e7a4c1206e9c2bcbc8fc6115408655e3]
-+ openssl dependency removed, [20fec1d27ea13003a212b00548d327a3f641e63f]
-+ check for typos in create_release, [64bc8e1df16bd17aad4f00dbf20582e5e605a9dd]
+### Fixes
++ backups now .age files, [5cabcbd7a0fc899f705796dffe7c5bc8468f4b24]
 
 ### Refactors
-+ tracing, [004cf6b1bfbcda8368ec22b7997753106af9d520]
++ get_auth_token single-liner, [41e82e992a3fc94dfc30740b917ad31035055ce5]
 
 
 see <a href='https://github.com/mrjackwills/mealpedant_backup_server/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details
