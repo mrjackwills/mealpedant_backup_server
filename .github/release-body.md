@@ -1,15 +1,12 @@
-### 2023-02-11
+### 2023-03-11
 
 ### Chores
-+ dev container updated, [95cd3ec06a0df0499b87132420a3c411996824df]
-+ dependencies updated, [7affdbcef8173adf9e0b59c048f709744dc4523b]
-+ create_release v0.2.7, [d02c0fbaa9ed287a8647d17dd434391d28dc066f]
-
-### Fixes
-+ backups now .age files, [5cabcbd7a0fc899f705796dffe7c5bc8468f4b24]
++ Rust 1.68.0 linting, [ff111b8c0dfe426691afbf135fc3b6e5ef314043]
++ devcontainer sparse protocol index, [b6e5b7dbb917aae5b8f5c6613bb2d88f69633f97]
++ dependencies updated, [2c6025c8c93f8dfafaac15879e791364b48038a7]
 
 ### Refactors
-+ get_auth_token single-liner, [41e82e992a3fc94dfc30740b917ad31035055ce5]
++ send_backup(), [b02cd06a5acf96c92092aeb4f989e2a9f51afa4f]
 
 
 see <a href='https://github.com/mrjackwills/mealpedant_backup_server/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details
