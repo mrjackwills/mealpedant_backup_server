@@ -47,14 +47,14 @@ impl WSSender {
         let mut all_files: Vec<String> = vec![];
         let mut entry = fs::read_dir(&self.app_envs.location_backup).await?;
         while let Some(file) = entry.next_entry().await? {
-            let file_name = file.file_name().into_string().unwrap_or_default();
-            if file_name.starts_with('.')
-                || !file_name.ends_with(".tar.age")
-                || file_name.contains("PHOTOS")
-            {
-                continue;
-            }
-            all_files.push(file_name);
+            if let Ok(file_name) = file.file_name().into_string() {
+                if !file_name.starts_with('.')
+                    && file_name.ends_with(".tar.age")
+                    && file_name.contains("PHOTOS")
+                {
+                    all_files.push(file_name);
+                }
+            };
         }
         all_files.sort();
 
@@ -94,7 +94,7 @@ impl WSSender {
         )
         .await
         {
-            close.unwrap_or_default();
+            close.ok();
         }
     }
 }
