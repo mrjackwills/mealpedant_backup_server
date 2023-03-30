@@ -1,3 +1,9 @@
+### Chores
++ dependencies updated, [4eab9a59cbe72f443d61a83b7ed2dfdfef2c9d09]
+
+### Fixes
++ send_backup() check file_name doesn't contain 'PHOTO', [cfd29911f7c78346dd446ef7db304a02e0473b5e]
+
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.2'>v0.1.2</a>
 ### 2023-03-11
 
