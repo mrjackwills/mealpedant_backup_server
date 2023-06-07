@@ -75,8 +75,7 @@ pub async fn open_connection(app_envs: AppEnv) {
                 info!("connected in ws_upgrade match");
                 connection_details.valid_connect();
                 let (writer, reader) = socket.split();
-                let writer = Arc::new(Mutex::new(writer));
-                let ws_sender = WSSender::new(app_envs.clone(), writer);
+                let ws_sender = WSSender::new(&app_envs, Arc::new(Mutex::new(writer)));
                 incoming_ws_message(reader, ws_sender).await;
                 info!("aborted spawns, incoming_ws_message done, reconnect next");
             }
