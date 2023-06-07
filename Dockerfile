@@ -2,7 +2,7 @@
 # SETUP #
 #########
 
-FROM alpine:3.17 as SETUP
+FROM alpine:3.18 as SETUP
 
 ARG DOCKER_GUID \
     DOCKER_UID \
@@ -26,7 +26,7 @@ RUN addgroup -g ${DOCKER_GUID} -S ${DOCKER_APP_GROUP} \
 WORKDIR /app
 
 # This gets automatically updated via create_release.sh
-RUN wget https://github.com/mrjackwills/mealpedant_backup_server/releases/download/v0.1.3/mealpedant_backup_server_linux_x86_musl.tar.gz \
+RUN wget https://github.com/mrjackwills/mealpedant_backup_server/releases/download/v0.1.4/mealpedant_backup_server_linux_x86_musl.tar.gz \
 	&& tar xzvf mealpedant_backup_server_linux_x86_musl.tar.gz mealpedant_backup_server \
 	&& rm mealpedant_backup_server_linux_x86_musl.tar.gz
 

@@ -18,8 +18,11 @@ pub struct WSSender {
 }
 
 impl WSSender {
-    pub fn new(app_envs: AppEnv, writer: Arc<Mutex<WSWriter>>) -> Self {
-        Self { app_envs, writer }
+    pub fn new(app_envs: &AppEnv, writer: Arc<Mutex<WSWriter>>) -> Self {
+        Self {
+            app_envs: app_envs.clone(),
+            writer,
+        }
     }
 
     /// Handle text message, in this program they will all be json text
@@ -88,13 +91,11 @@ impl WSSender {
 
     /// close connection, uses a 2 second timeout
     pub async fn close(&mut self) {
-        if let Ok(close) = tokio::time::timeout(
+        tokio::time::timeout(
             std::time::Duration::from_secs(2),
             self.writer.lock().await.close(),
         )
         .await
-        {
-            close.ok();
-        }
+        .ok();
     }
 }
