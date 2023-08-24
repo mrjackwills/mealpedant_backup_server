@@ -12,13 +12,13 @@
 // Only allow when debugging
 // #![allow(unused)]
 
+mod app_env;
 mod app_error;
-mod env;
 mod word_art;
 mod ws;
 mod ws_messages;
 
-use env::AppEnv;
+use app_env::AppEnv;
 use word_art::Intro;
 use ws::open_connection;
 

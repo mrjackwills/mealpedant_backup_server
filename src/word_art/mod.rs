@@ -1,4 +1,4 @@
-use crate::env::AppEnv;
+use crate::app_env::AppEnv;
 
 mod font;
 
@@ -78,7 +78,6 @@ impl Intro {
 #[allow(clippy::unwrap_used, clippy::pedantic)]
 #[cfg(test)]
 mod tests {
-    use crate::env::EnvTimeZone;
 
     use super::*;
     use std::time::SystemTime;
@@ -90,7 +89,6 @@ mod tests {
             location_backup: na.clone(),
             log_level: tracing::Level::TRACE,
             start_time: SystemTime::now(),
-            timezone: EnvTimeZone::new(&na),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),
@@ -108,7 +106,6 @@ mod tests {
             location_backup: na.clone(),
             log_level: tracing::Level::TRACE,
             start_time: SystemTime::now(),
-            timezone: EnvTimeZone::new(&na),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),
@@ -127,7 +124,6 @@ mod tests {
             location_backup: na.clone(),
             log_level: tracing::Level::DEBUG,
             start_time: SystemTime::now(),
-            timezone: EnvTimeZone::new(na.clone()),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),
@@ -146,7 +142,6 @@ mod tests {
             location_backup: na.clone(),
             log_level: tracing::Level::INFO,
             start_time: SystemTime::now(),
-            timezone: EnvTimeZone::new(na.clone()),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),
