@@ -15,7 +15,7 @@ use tracing::{error, info};
 use connect::ws_upgrade;
 use connection_details::ConnectionDetails;
 
-use crate::env::AppEnv;
+use crate::app_env::AppEnv;
 
 use self::ws_sender::WSSender;
 
