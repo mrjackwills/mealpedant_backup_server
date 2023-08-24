@@ -12,8 +12,8 @@
 // Only allow when debugging
 // #![allow(unused)]
 
-mod app_error;
 mod app_env;
+mod app_error;
 mod word_art;
 mod ws;
 mod ws_messages;
