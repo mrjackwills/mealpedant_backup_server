@@ -1,6 +1,4 @@
 use std::{collections::HashMap, env, fs, time::SystemTime};
-use time_tz::timezones;
-
 use crate::app_error::AppError;
 
 type EnvHashMap = HashMap<String, String>;
@@ -8,26 +6,12 @@ type EnvHashMap = HashMap<String, String>;
 const LOCAL_ENV: &str = ".env";
 const DOCKER_ENV: &str = "/app_env/.env";
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
-pub struct EnvTimeZone(String);
-
-impl EnvTimeZone {
-    pub fn new(x: impl Into<String>) -> Self {
-        let zone = x.into();
-        if timezones::get_by_name(&zone).is_some() {
-            Self(zone)
-        } else {
-            Self("Etc/UTC".into())
-        }
-    }
-}
-
 #[derive(Debug, Clone)]
 pub struct AppEnv {
     pub location_backup: String,
     pub log_level: tracing::Level,
     pub start_time: SystemTime,
-    pub timezone: EnvTimeZone,
+    // pub timezone: EnvTimeZone,
     pub ws_address: String,
     pub ws_apikey: String,
     pub ws_password: String,
@@ -54,13 +38,6 @@ impl AppEnv {
                 Ok(value.into())
             })
     }
-    /// Check that a given timezone is valid, else return UTC
-    fn parse_timezone(map: &EnvHashMap) -> EnvTimeZone {
-        EnvTimeZone::new(
-            map.get("TIMEZONE")
-                .map_or_else(String::new, std::borrow::ToOwned::to_owned),
-        )
-    }
 
     /// Parse debug and/or trace into tracing level
     fn parse_log(map: &EnvHashMap) -> tracing::Level {
@@ -86,7 +63,6 @@ impl AppEnv {
                 &env_map,
             )?)?,
             start_time: SystemTime::now(),
-            timezone: Self::parse_timezone(&env_map),
             log_level: Self::parse_log(&env_map),
             ws_address: Self::parse_string("WS_ADDRESS", &env_map)?,
             ws_apikey: Self::parse_string("WS_APIKEY", &env_map)?,
@@ -281,56 +257,6 @@ mod tests {
         assert_eq!(result, tracing::Level::TRACE);
     }
 
-    #[test]
-    fn env_parse_timezone_ok() {
-        // FIXTURES
-        let mut map = HashMap::new();
-        map.insert("TIMEZONE".to_owned(), "America/New_York".to_owned());
-
-        // ACTION
-        let result = AppEnv::parse_timezone(&map);
-
-        // CHECK
-        assert_eq!(result.0, "America/New_York");
-
-        let mut map = HashMap::new();
-        map.insert("TIMEZONE".to_owned(), "Europe/Berlin".to_owned());
-
-        // ACTION
-        let result = AppEnv::parse_timezone(&map);
-
-        // CHECK
-        assert_eq!(result.0, "Europe/Berlin");
-
-        // FIXTURES
-        let map = HashMap::new();
-
-        // ACTION
-        let result = AppEnv::parse_timezone(&map);
-
-        // CHECK
-        assert_eq!(result.0, "Etc/UTC");
-    }
-
-    #[test]
-    fn env_parse_timezone_err() {
-        // FIXTURES
-        let mut map = HashMap::new();
-        map.insert("TIMEZONE".to_owned(), "america/New_York".to_owned());
-
-        // ACTION
-        let result = AppEnv::parse_timezone(&map);
-        // CHECK
-        assert_eq!(result.0, "Etc/UTC");
-
-        // No timezone present
-        // FIXTURES
-        let map = HashMap::new();
-        let result = AppEnv::parse_timezone(&map);
-
-        // CHECK
-        assert_eq!(result.0, "Etc/UTC");
-    }
     #[test]
     fn env_panic_appenv() {
         // ACTION
