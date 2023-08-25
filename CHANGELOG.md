@@ -1,5 +1,8 @@
+# <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.7'>v0.1.7</a>
+### 2023-08-25
+
 ### Features
-+ switch base-64 crate for data_encoding, [fda2b524913894b04e91bbd77b9177d9129dc857]
++ switch base-64 crate for data_encoding, [fda2b524](https://github.com/mrjackwills/mealpedant_backup_server/commit/fda2b524913894b04e91bbd77b9177d9129dc857)
 
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.6'>v0.1.6</a>
 ### 2023-08-24
