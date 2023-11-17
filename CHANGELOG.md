@@ -1,13 +1,16 @@
+# <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.8'>v0.1.8</a>
+### 2023-11-17
+
 ### Chores
-+ .devcontainer updated, [cd7df505ddd20e0a47cdfcec951d0f9e78616f37]
-+ lints moved from main.rs to Cargo.toml, [108509c57089f6f1233f3348f25e0e7f3e896704]
-+ Rust 1.73.0 linting, [e180b8f32163da8606f7d54e3edd678091cb5bc4]
-+ dependencies updated, [f374228911999f3472fbea89036233a0289933cf]
-+ Rust 1.74.0 linting, [93e813c36214c6cd41ac830188d6a3c0288e626d]
-+ GitHub workflow updated, [b45134a70d4e402fe6459eec98b57c897cb0c463]
++ .devcontainer updated, [cd7df505](https://github.com/mrjackwills/mealpedant_backup_server/commit/cd7df505ddd20e0a47cdfcec951d0f9e78616f37)
++ lints moved from main.rs to Cargo.toml, [108509c5](https://github.com/mrjackwills/mealpedant_backup_server/commit/108509c57089f6f1233f3348f25e0e7f3e896704)
++ Rust 1.73.0 linting, [e180b8f3](https://github.com/mrjackwills/mealpedant_backup_server/commit/e180b8f32163da8606f7d54e3edd678091cb5bc4)
++ dependencies updated, [f3742289](https://github.com/mrjackwills/mealpedant_backup_server/commit/f374228911999f3472fbea89036233a0289933cf)
++ Rust 1.74.0 linting, [93e813c3](https://github.com/mrjackwills/mealpedant_backup_server/commit/93e813c36214c6cd41ac830188d6a3c0288e626d)
++ GitHub workflow updated, [b45134a7](https://github.com/mrjackwills/mealpedant_backup_server/commit/b45134a70d4e402fe6459eec98b57c897cb0c463)
 
 ### Fixes
-+ .gitattributes updated, [6c231d72bdbc0548aa11babab40ddd7208aa574f]
++ .gitattributes updated, [6c231d72](https://github.com/mrjackwills/mealpedant_backup_server/commit/6c231d72bdbc0548aa11babab40ddd7208aa574f)
 
 
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.7'>v0.1.7</a>
