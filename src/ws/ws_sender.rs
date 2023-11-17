@@ -34,7 +34,7 @@ impl WSSender {
                     ParsedMessage::Backup => {
                         // Log errors, else just ignore
                         match Self::send_backup(self, unique).await {
-                            Ok(_) => trace!("backup sent"),
+                            Ok(()) => trace!("backup sent"),
                             Err(e) => {
                                 error!("send_backup::{e}");
                             }
@@ -83,7 +83,7 @@ impl WSSender {
             .send(StructuredResponse::data(response, unique))
             .await
         {
-            Ok(_) => trace!("Message sent"),
+            Ok(()) => trace!("Message sent"),
             Err(e) => error!("send_ws_response::SEND-ERROR::{e}"),
         }
     }
