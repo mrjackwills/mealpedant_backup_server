@@ -1,16 +1,12 @@
-### 2023-11-17
+### 2023-12-31
 
 ### Chores
-+ .devcontainer updated, [cd7df505ddd20e0a47cdfcec951d0f9e78616f37]
-+ lints moved from main.rs to Cargo.toml, [108509c57089f6f1233f3348f25e0e7f3e896704]
-+ Rust 1.73.0 linting, [e180b8f32163da8606f7d54e3edd678091cb5bc4]
-+ dependencies updated, [f374228911999f3472fbea89036233a0289933cf]
-+ Rust 1.74.0 linting, [93e813c36214c6cd41ac830188d6a3c0288e626d]
-+ GitHub workflow updated, [b45134a70d4e402fe6459eec98b57c897cb0c463]
++ file linting, [c6aed62c0596c84d5e0e36d28751ea63e729de3c]
++ Dockerfile alpine bump to 3.19, [d3da26fdd98aadc3bdc4f66c1d445aad5674265a]
++ .devcontainer updated, [ace61e9c77a2893b9cabc001045a7b8d00b2793c]
++ dependencies updated, [5b24dac9d730a0976ae8db614aa14f60fe1f5de8]
 
-### Fixes
-+ .gitattributes updated, [6c231d72bdbc0548aa11babab40ddd7208aa574f]
-
-
+### Features
++ run.sh v0.1.0, [d525099b98a44b5ea145c00521cf8946a0a185ad]
 
 see <a href='https://github.com/mrjackwills/mealpedant_backup_server/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details
