@@ -210,7 +210,7 @@ cargo_build_aarch64_linux() {
 cargo_build_all() {
 	cargo_build_aarch64_linux
 	ask_continue
-	cargo_build_armv6_linux
+	cargo_build_x86_linux
 	ask_continue
 }
 
