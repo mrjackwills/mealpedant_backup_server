@@ -19,9 +19,9 @@ RUN addgroup -g ${DOCKER_GUID} -S ${DOCKER_APP_GROUP} \
 WORKDIR /app
 
 # This gets automatically updated via create_release.sh
-RUN wget https://github.com/mrjackwills/mealpedant_backup_server/releases/download/v0.1.10/mealpedant_backup_server_linux_x86_musl.tar.gz \
-	&& tar xzvf mealpedant_backup_server_linux_x86_musl.tar.gz mealpedant_backup_server \
-	&& rm mealpedant_backup_server_linux_x86_musl.tar.gz
+RUN wget https://github.com/mrjackwills/mealpedant_backup_server/releases/download/v0.1.11/mealpedant_backup_server_x86_musl.tar.gz \
+	&& tar xzvf mealpedant_backup_server_x86_musl.tar.gz mealpedant_backup_server \
+	&& rm mealpedant_backup_server_x86_musl.tar.gz
 
 ##########
 # RUNNER #
