@@ -1,4 +1,4 @@
-version: "3.8"
+
 services:
   mealpedant_backup_server:
     image: mealpedant_backup_server:0.1.10
