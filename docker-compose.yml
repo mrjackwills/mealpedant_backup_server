@@ -1,14 +1,14 @@
 
 services:
   mealpedant_backup_server:
-    image: mealpedant_backup_server:0.1.11
+    image: mealpedant_backup_server:0.1.12
     build:
       context: .
       dockerfile: Dockerfile
     container_name: mealpedant_backup_server
     volumes:
       - /srv/backup/mealpedant:/backups:ro
-      - $HOME/mealpedant_backup/.env:/app_env/.env:ro
+      - $HOME/mealpedant_backup.d/.env:/app_env/.env:ro
     cap_drop:
       - all
     security_opt:
