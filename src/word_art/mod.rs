@@ -81,7 +81,6 @@ impl Intro {
 mod tests {
 
     use super::*;
-    use std::time::SystemTime;
 
     #[test]
     fn word_art_new_ok() -> Result<(), String> {
@@ -89,7 +88,6 @@ mod tests {
         let args = AppEnv {
             location_backup: na.clone(),
             log_level: tracing::Level::TRACE,
-            start_time: SystemTime::now(),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),
@@ -106,7 +104,6 @@ mod tests {
         let args = AppEnv {
             location_backup: na.clone(),
             log_level: tracing::Level::TRACE,
-            start_time: SystemTime::now(),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),
@@ -124,7 +121,6 @@ mod tests {
         let args = AppEnv {
             location_backup: na.clone(),
             log_level: tracing::Level::DEBUG,
-            start_time: SystemTime::now(),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),
@@ -142,7 +138,6 @@ mod tests {
         let args = AppEnv {
             location_backup: na.clone(),
             log_level: tracing::Level::INFO,
-            start_time: SystemTime::now(),
             ws_address: na.clone(),
             ws_apikey: na.clone(),
             ws_password: na.clone(),

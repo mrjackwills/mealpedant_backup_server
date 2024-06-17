@@ -1,5 +1,5 @@
 use crate::app_error::AppError;
-use std::{collections::HashMap, env, fs, time::SystemTime};
+use std::{collections::HashMap, env, fs};
 
 type EnvHashMap = HashMap<String, String>;
 
@@ -10,8 +10,6 @@ const DOCKER_ENV: &str = "/app_env/.env";
 pub struct AppEnv {
     pub location_backup: String,
     pub log_level: tracing::Level,
-    pub start_time: SystemTime,
-    // pub timezone: EnvTimeZone,
     pub ws_address: String,
     pub ws_apikey: String,
     pub ws_password: String,
@@ -62,7 +60,6 @@ impl AppEnv {
                 "LOCATION_BACKUP",
                 &env_map,
             )?)?,
-            start_time: SystemTime::now(),
             log_level: Self::parse_log(&env_map),
             ws_address: Self::parse_string("WS_ADDRESS", &env_map)?,
             ws_apikey: Self::parse_string("WS_APIKEY", &env_map)?,
