@@ -16,7 +16,7 @@ jobs:
             output_name: x86_musl.tar.gz
 
           - target: aarch64-unknown-linux-musl
-            output_name: linux_aarch64.tar.gz
+            output_name: aarch64_musl.tar.gz
 
     runs-on: ubuntu-latest
     steps:
