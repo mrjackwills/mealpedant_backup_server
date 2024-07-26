@@ -26,7 +26,7 @@ impl WSSender {
     }
 
     /// Handle text message, in this program they will all be json text
-    pub async fn on_text(&mut self, message: String) {
+    pub async fn on_text(&self, message: String) {
         if let Some(data) = to_struct(&message) {
             match data {
                 MessageValues::Invalid(error) => error!("{error:?}"),
@@ -46,7 +46,7 @@ impl WSSender {
     }
 
     /// Look in backups folder, sort by name (so will sort by data), and send the last file, e.g. the newest, as long as it's a tar.age file
-    async fn send_backup(&mut self, unique: String) -> Result<(), AppError> {
+    async fn send_backup(&self, unique: String) -> Result<(), AppError> {
         let mut all_files: Vec<String> = vec![];
         let mut entry = fs::read_dir(&self.app_envs.location_backup).await?;
         while let Some(file) = entry.next_entry().await? {
@@ -75,7 +75,7 @@ impl WSSender {
     }
 
     /// Send a message to the socket
-    pub async fn send_message(&mut self, response: Response, unique: String) {
+    pub async fn send_message(&self, response: Response, unique: String) {
         match self
             .writer
             .lock()
@@ -89,7 +89,7 @@ impl WSSender {
     }
 
     /// close connection, uses a 2 second timeout
-    pub async fn close(&mut self) {
+    pub async fn close(&self) {
         tokio::time::timeout(
             std::time::Duration::from_secs(2),
             self.writer.lock().await.close(),
