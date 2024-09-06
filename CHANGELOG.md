@@ -1,10 +1,13 @@
+# <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.15'>v0.1.15</a>
+### 2024-09-06
+
 ### Chores
-+ Rust 1.81.0 linting, [747433b58409b1038074453f58b12697e30aa94a]
-+ .devcontainer updated, [611960be3c6e6b41fe43781ca51a391529d2cdb9]
-+ dependencies updated, [31e3a7488b1d0762341473b4be34fcc1bb4b9ae4]
++ Rust 1.81.0 linting, [747433b5](https://github.com/mrjackwills/mealpedant_backup_server/commit/747433b58409b1038074453f58b12697e30aa94a)
++ .devcontainer updated, [611960be](https://github.com/mrjackwills/mealpedant_backup_server/commit/611960be3c6e6b41fe43781ca51a391529d2cdb9)
++ dependencies updated, [31e3a748](https://github.com/mrjackwills/mealpedant_backup_server/commit/31e3a7488b1d0762341473b4be34fcc1bb4b9ae4)
 
 ### Refactors
-+ use `fs::exists`, [0d1c1cf7f6a9dc5a8c8ccd52de6112de0c492fc3]
++ use `fs::exists`, [0d1c1cf7](https://github.com/mrjackwills/mealpedant_backup_server/commit/0d1c1cf7f6a9dc5a8c8ccd52de6112de0c492fc3)
 
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.14'>v0.1.14</a>
 ### 2024-07-26
