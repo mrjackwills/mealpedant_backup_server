@@ -1,11 +1,11 @@
-### 2024-07-26
+### 2024-09-06
 
 ### Chores
-+ dependencies updated, [0f34b88b0b4acce11682134a64a27a4f2aa5f186]
-+ Rust 1.80 linting, [4a854f54fed40986d31c1f6682aec953f8db5979]
-+ .devcontainer updated, [6918eb3f35feb0a7bcb860be2307e2f5d267736b]
++ Rust 1.81.0 linting, [747433b58409b1038074453f58b12697e30aa94a]
++ .devcontainer updated, [611960be3c6e6b41fe43781ca51a391529d2cdb9]
++ dependencies updated, [31e3a7488b1d0762341473b4be34fcc1bb4b9ae4]
 
-### Fixes
-+ Docker file stage name case, [dee8e4072d2159f80678859e88ce95a4f74e54a5]
+### Refactors
++ use `fs::exists`, [0d1c1cf7f6a9dc5a8c8ccd52de6112de0c492fc3]
 
 see <a href='https://github.com/mrjackwills/mealpedant_backup_server/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details
