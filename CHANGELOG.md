@@ -1,10 +1,13 @@
+# <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.16'>v0.1.16</a>
+### 2024-10-19
+
 ### Chores
-+ dependencies updated, [2465dd60810b261ccc4107f89b002f31d13517a0]
-+ .devcontainer updated, [ecade7d5b7e800a3cb96b7dd189c287f23047f4f]
-+ run.sh & create_release.sh updated, [894816cac82395c5b8157038a686b670b31f393f]
++ dependencies updated, [2465dd60](https://github.com/mrjackwills/mealpedant_backup_server/commit/2465dd60810b261ccc4107f89b002f31d13517a0)
++ .devcontainer updated, [ecade7d5](https://github.com/mrjackwills/mealpedant_backup_server/commit/ecade7d5b7e800a3cb96b7dd189c287f23047f4f)
++ run.sh & create_release.sh updated, [894816ca](https://github.com/mrjackwills/mealpedant_backup_server/commit/894816cac82395c5b8157038a686b670b31f393f)
 
 ### Refactors
-+ qualify tracing macro use, [ad9616554f82d4e059d5bb86f8021340154f4f9a]
++ qualify tracing macro use, [ad961655](https://github.com/mrjackwills/mealpedant_backup_server/commit/ad9616554f82d4e059d5bb86f8021340154f4f9a)
 
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.15'>v0.1.15</a>
 ### 2024-09-06
