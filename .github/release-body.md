@@ -1,11 +1,11 @@
-### 2024-09-06
+### 2024-10-19
 
 ### Chores
-+ Rust 1.81.0 linting, [747433b58409b1038074453f58b12697e30aa94a]
-+ .devcontainer updated, [611960be3c6e6b41fe43781ca51a391529d2cdb9]
-+ dependencies updated, [31e3a7488b1d0762341473b4be34fcc1bb4b9ae4]
++ dependencies updated, [2465dd60810b261ccc4107f89b002f31d13517a0]
++ .devcontainer updated, [ecade7d5b7e800a3cb96b7dd189c287f23047f4f]
++ run.sh & create_release.sh updated, [894816cac82395c5b8157038a686b670b31f393f]
 
 ### Refactors
-+ use `fs::exists`, [0d1c1cf7f6a9dc5a8c8ccd52de6112de0c492fc3]
++ qualify tracing macro use, [ad9616554f82d4e059d5bb86f8021340154f4f9a]
 
 see <a href='https://github.com/mrjackwills/mealpedant_backup_server/blob/main/CHANGELOG.md'>CHANGELOG.md</a> for more details
