@@ -55,6 +55,6 @@ impl ConnectionDetails {
         self.count = 0;
         self.connection_instant = Some(Instant::now());
         let now = OffsetDateTime::now_utc();
-       	tracing::debug!("connected at:: {} {}", now.date(), now.time());
+        tracing::debug!("connected at:: {} {}", now.date(), now.time());
     }
 }

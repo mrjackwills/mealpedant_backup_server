@@ -41,7 +41,7 @@ pub fn to_struct(input: &str) -> Option<MessageValues> {
         let error_serialized = serde_json::from_str::<ErrorData>(input);
         error_serialized.map_or_else(
             |_| {
-                 tracing::debug!(input);
+                tracing::debug!(input);
                 tracing::debug!("not a known input message");
                 None
             },
