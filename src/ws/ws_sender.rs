@@ -3,7 +3,6 @@ use futures_util::lock::Mutex;
 use futures_util::SinkExt;
 use std::sync::Arc;
 use tokio::fs;
-use tracing::{error, trace};
 
 use crate::app_error::AppError;
 use crate::ws_messages::{BackupData, MessageValues, ParsedMessage, Response, StructuredResponse};
@@ -29,14 +28,14 @@ impl WSSender {
     pub async fn on_text(&self, message: String) {
         if let Some(data) = to_struct(&message) {
             match data {
-                MessageValues::Invalid(error) => error!("{error:?}"),
+                MessageValues::Invalid(error) => tracing::error!("{error:?}"),
                 MessageValues::Valid(message, unique) => match message {
                     ParsedMessage::Backup => {
                         // Log errors, else just ignore
                         match Self::send_backup(self, unique).await {
-                            Ok(()) => trace!("backup sent"),
+                            Ok(()) => tracing::trace!("backup sent"),
                             Err(e) => {
-                                error!("send_backup::{e}");
+                                tracing::error!("send_backup::{e}");
                             }
                         }
                     }
@@ -83,8 +82,8 @@ impl WSSender {
             .send(StructuredResponse::data(response, unique))
             .await
         {
-            Ok(()) => trace!("Message sent"),
-            Err(e) => error!("send_ws_response::SEND-ERROR::{e}"),
+            Ok(()) => tracing::trace!("Message sent"),
+            Err(e) => tracing::error!("send_ws_response::SEND-ERROR::{e}"),
         }
     }
 
