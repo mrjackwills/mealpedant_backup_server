@@ -19,5 +19,5 @@ async fn main() {
     let app_envs = AppEnv::get();
     setup_tracing(&app_envs);
     Intro::new(&app_envs).show();
-    open_connection(app_envs).await;
+    tokio::spawn(open_connection(app_envs)).await.ok();
 }
