@@ -33,7 +33,7 @@ impl StructuredResponse {
             error: None,
             unique,
         };
-        Message::Text(serde_json::to_string(&x).unwrap_or_default())
+        Message::Text(serde_json::to_string(&x).unwrap_or_default().into())
     }
 
     /// Convert a ErrorResponse into a Tokio message of StructureResponse
@@ -43,6 +43,6 @@ impl StructuredResponse {
             data: None,
             unique,
         };
-        Message::Text(serde_json::to_string(&x).unwrap_or_default())
+        Message::Text(serde_json::to_string(&x).unwrap_or_default().into())
     }
 }
