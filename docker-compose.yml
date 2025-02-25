@@ -1,7 +1,7 @@
 
 services:
   mealpedant_backup_server:
-    image: mealpedant_backup_server:0.1.18
+    image: mealpedant_backup_server:0.2.0
     build:
       context: .
       dockerfile: Dockerfile
