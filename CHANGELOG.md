@@ -8,7 +8,6 @@
 + use jiff for time methods, [23419431abd40a8f0d625b071261cde4e66bfebc]
 + Rust edition 2024, [47dfafd900955d8f9c06d6c1abe80bd0bed920a8]
 
-
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.1.18'>v0.1.18</a>
 ### 2025-01-12
 
