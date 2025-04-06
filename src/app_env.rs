@@ -166,7 +166,7 @@ mod tests {
         match result.unwrap_err() {
             AppError::FileNotFound(value) => assert_eq!(value, "./some_random_folder"),
             _ => unreachable!(),
-        };
+        }
 
         // random file err
         let result = AppEnv::check_file_exists("./some_random_file.txt".to_owned());
@@ -174,7 +174,7 @@ mod tests {
         match result.unwrap_err() {
             AppError::FileNotFound(value) => assert_eq!(value, "./some_random_file.txt"),
             _ => unreachable!(),
-        };
+        }
     }
 
     #[test]
