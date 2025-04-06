@@ -56,7 +56,7 @@ impl WSSender {
                 {
                     all_files.push(file_name);
                 }
-            };
+            }
         }
         all_files.sort();
 

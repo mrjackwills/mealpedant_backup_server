@@ -86,7 +86,7 @@ mod tests {
         match result {
             MessageValues::Valid(ParsedMessage::Backup, _unique) => (),
             _ => unreachable!("Shouldn't have matched this"),
-        };
+        }
     }
 
     #[test]
