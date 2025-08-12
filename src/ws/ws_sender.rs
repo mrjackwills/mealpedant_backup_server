@@ -51,11 +51,11 @@ impl WSSender {
         while let Some(file) = entry.next_entry().await? {
             if let Ok(file_name) = file.file_name().into_string()
                 && !file_name.starts_with('.')
-                    && file_name.ends_with(".tar.age")
-                    && !file_name.contains("PHOTOS")
-                {
-                    all_files.push(file_name);
-                }
+                && file_name.ends_with(".tar.age")
+                && !file_name.contains("PHOTOS")
+            {
+                all_files.push(file_name);
+            }
         }
         all_files.sort();
 
