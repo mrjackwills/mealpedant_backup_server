@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# rust create_release v0.6.0
-# 2024-10-19
+# rust create_release v0.6.3
+# 2025-09-20
 
 STAR_LINE='****************************************'
 CWD=$(pwd)
@@ -214,11 +214,14 @@ cross_build_aarch64_linux() {
 
 # Build all releases that GitHub workflow would
 # This will download GB's of docker images
+# $1 is 0 or 1, if 1 won't run ask_continue
 cross_build_all() {
+	cargo_clean
+	skip_confirm=$1
 	cross_build_aarch64_linux
-	ask_continue
-	cross_build_x86_linux
-	ask_continue
+	[ "$skip_confirm" -ne 1 ] && ask_continue
+	cross_build_x86_linux	
+	[ "$skip_confirm" -ne 1 ] && ask_continue
 }
 
 # $1 text to colourise
@@ -242,7 +245,7 @@ release_flow() {
 	get_git_remote_url
 
 	cargo_test
-	cross_build_all
+	cross_build_all 0
 
 	cd "${CWD}" || error_close "Can't find ${CWD}"
 	check_tag
@@ -309,6 +312,7 @@ build_choice() {
 		1 "x86 linux musl" off
 		2 "aarch64 linux gnu" off
 		3 "all" off
+		4 "all automatic" off
 	)
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	exitStatus=$?
@@ -330,6 +334,10 @@ build_choice() {
 			exit
 			;;
 		3)
+			cross_build_all
+			exit
+			;;
+		4)
 			cross_build_all
 			exit
 			;;
