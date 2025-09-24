@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# rust create_release v0.6.0
-# 2024-10-19
+# rust create_release v0.6.3
+# 2025-09-20
 
 STAR_LINE='****************************************'
 CWD=$(pwd)
@@ -212,13 +212,31 @@ cross_build_aarch64_linux() {
 	cross build --target aarch64-unknown-linux-musl --release
 }
 
+cargo_clean() {
+	echo -e "${YELLOW}cargo clean${RESET}"
+	cargo clean
+}
+
+cargo_build() {
+	check_cross
+	echo -e "${YELLOW}cargo build --release${RESET}"
+	cargo build --release
+}
+
 # Build all releases that GitHub workflow would
 # This will download GB's of docker images
-cross_build_all() {
+# $1 is 0 or 1, if 1 won't run ask_continue
+cargo_cross_build_all() {
+	if ask_yn "cargo clean"; then
+		cargo_clean
+	fi
+	skip_confirm=$1
+	cargo_build
+	[ "$skip_confirm" -ne 1 ] && ask_continue
 	cross_build_aarch64_linux
-	ask_continue
-	cross_build_x86_linux
-	ask_continue
+	[ "$skip_confirm" -ne 1 ] && ask_continue
+	cross_build_x86_linux	
+	[ "$skip_confirm" -ne 1 ] && ask_continue
 }
 
 # $1 text to colourise
@@ -242,7 +260,7 @@ release_flow() {
 	get_git_remote_url
 
 	cargo_test
-	cross_build_all
+	cargo_cross_build_all 0
 
 	cd "${CWD}" || error_close "Can't find ${CWD}"
 	check_tag
@@ -309,6 +327,7 @@ build_choice() {
 		1 "x86 linux musl" off
 		2 "aarch64 linux gnu" off
 		3 "all" off
+		4 "all automatic" off
 	)
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 	exitStatus=$?
@@ -330,7 +349,11 @@ build_choice() {
 			exit
 			;;
 		3)
-			cross_build_all
+			cargo_cross_build_all 0
+			exit
+			;;
+		4)
+			cargo_cross_build_all 1
 			exit
 			;;
 		esac

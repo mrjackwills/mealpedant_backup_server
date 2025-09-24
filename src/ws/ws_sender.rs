@@ -29,17 +29,19 @@ impl WSSender {
         if let Some(data) = to_struct(&message) {
             match data {
                 MessageValues::Invalid(error) => tracing::error!("{error:?}"),
-                MessageValues::Valid(message, unique) => match message {
-                    ParsedMessage::Backup => {
-                        // Log errors, else just ignore
-                        match Self::send_backup(self, unique).await {
-                            Ok(()) => tracing::trace!("backup sent"),
-                            Err(e) => {
-                                tracing::error!("send_backup::{e}");
+                MessageValues::Valid(message, unique) => {
+                    match message {
+                        ParsedMessage::Backup => {
+                            // Log errors, else just ignore
+                            match Self::send_backup(self, unique).await {
+                                Ok(()) => tracing::trace!("backup sent"),
+                                Err(e) => {
+                                    tracing::error!("send_backup::{e}");
+                                }
                             }
                         }
                     }
-                },
+                }
             }
         }
     }
