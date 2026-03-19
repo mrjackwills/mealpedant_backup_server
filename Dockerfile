@@ -19,7 +19,7 @@ RUN addgroup -g ${DOCKER_GUID} -S ${DOCKER_APP_GROUP} \
 WORKDIR /app
 
 # This gets automatically updated via create_release.sh
-ARG MEALPEDANT_BACKUP_SERVER_VERSION=v0.2.4
+ARG MEALPEDANT_BACKUP_SERVER_VERSION=v0.3.0
 
 RUN wget "https://github.com/mrjackwills/mealpedant_backup_server/releases/download/${MEALPEDANT_BACKUP_SERVER_VERSION}/mealpedant_backup_server_aarch64_musl.tar.gz" \
 	&& tar xzvf mealpedant_backup_server_aarch64_musl.tar.gz mealpedant_backup_server \
@@ -37,6 +37,8 @@ ARG DOCKER_APP_USER=app_user \
 COPY --from=setup /app/ /app
 COPY --from=setup /etc/group /etc/passwd /etc/
 COPY --from=setup /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+
+# COPY --chown=${DOCKER_APP_USER}:${DOCKER_APP_GROUP} ./mealpedant_backup /app
 
 USER ${DOCKER_APP_USER}
 

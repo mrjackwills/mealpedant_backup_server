@@ -1,7 +1,7 @@
 
 services:
   mealpedant_backup_server:
-    image: mealpedant_backup_server:0.2.4
+    image: mealpedant_backup_server:0.3.0
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,9 +17,6 @@ services:
     restart: always
     networks:
       - mealpedant_backup_server-net
-    logging:
-      options:
-        max-size: 10m
     deploy:
       resources:
         limits:

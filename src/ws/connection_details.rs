@@ -33,6 +33,7 @@ impl ConnectionDetails {
     }
 
     /// increase attempt count, and set delay to long if 20+ attempts
+    /// Set is_connected to 0 and time to none
     pub const fn fail_connect(&mut self) {
         self.count += 1;
         if self.count >= 20 {
