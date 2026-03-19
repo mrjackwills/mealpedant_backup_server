@@ -1,3 +1,6 @@
+### Fixes
++ automated Docker arch selection & download, [b79f1a8b0ebd538c4fcf60eee1820d3998dbe401]
+
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.3.0'>v0.3.0</a>
 ### 2026-03-19
 
