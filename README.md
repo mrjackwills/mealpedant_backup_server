@@ -14,7 +14,7 @@
 	Built in <a href='https://www.rust-lang.org/' target='_blank' rel='noopener noreferrer'>Rust</a>,
 	for <a href='https://docker.com' target='_blank' rel='noopener noreferrer'> Docker</a>
 	<br>
-	see the accompanying <a href='https://www.github.com/mrjackwills/mealpedant_backup_pi' target='_blank' rel='noopener noreferrer'>pi client</a>
+	see the accompanying <a href='https://www.github.com/mrjackwills/mealpedant_backup_client' target='_blank' rel='noopener noreferrer'>client</a>
 </p>
 
 ### Required software
