@@ -38,6 +38,8 @@ COPY --from=setup /app/ /app
 COPY --from=setup /etc/group /etc/passwd /etc/
 COPY --from=setup /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
+# COPY --chown=${DOCKER_APP_USER}:${DOCKER_APP_GROUP} ./mealpedant_backup /app
+
 USER ${DOCKER_APP_USER}
 
 ENTRYPOINT ["/app/mealpedant_backup_server"]

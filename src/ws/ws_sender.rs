@@ -1,27 +1,32 @@
+use async_channel::Sender;
 use data_encoding::BASE64;
-use futures_util::SinkExt;
-use futures_util::lock::Mutex;
-use std::sync::Arc;
 use tokio::fs;
 
+use crate::C;
 use crate::app_error::AppError;
-use crate::ws_messages::{BackupData, MessageValues, ParsedMessage, Response, StructuredResponse};
+use crate::message_handler::{Msg, WSResponse};
+use crate::ws_messages::{BackupData, MessageValues, ParsedMessage, Response};
 use crate::{app_env::AppEnv, ws_messages::to_struct};
-
-use super::WSWriter;
 
 #[derive(Debug, Clone)]
 pub struct WSSender {
     app_envs: AppEnv,
-    writer: Arc<Mutex<WSWriter>>,
+    connected_instant: std::time::Instant,
+    tx: Sender<Msg>,
 }
 
 impl WSSender {
-    pub fn new(app_envs: &AppEnv, writer: Arc<Mutex<WSWriter>>) -> Self {
+    pub fn new(app_envs: &AppEnv, tx: &Sender<Msg>) -> Self {
         Self {
-            app_envs: app_envs.clone(),
-            writer,
+            app_envs: C!(app_envs),
+            connected_instant: std::time::Instant::now(),
+            tx: C!(tx),
         }
+    }
+
+    /// Update the connected_instance time
+    pub fn on_connection(&mut self) {
+        self.connected_instant = std::time::Instant::now();
     }
 
     /// Handle text message, in this program they will all be json text
@@ -77,24 +82,14 @@ impl WSSender {
     /// Send a message to the socket
     pub async fn send_message(&self, response: Response, unique: String) {
         match self
-            .writer
-            .lock()
-            .await
-            .send(StructuredResponse::data(response, unique))
+            .tx
+            .send(Msg::ToSend(WSResponse { response, unique }))
             .await
         {
-            Ok(()) => tracing::trace!("Message sent"),
-            Err(e) => tracing::error!("send_ws_response::SEND-ERROR::{e}"),
+            Ok(()) => (),
+            Err(e) => {
+                tracing::error!("{e}");
+            }
         }
-    }
-
-    /// close connection, uses a 2 second timeout
-    pub async fn close(&self) {
-        tokio::time::timeout(
-            std::time::Duration::from_secs(2),
-            self.writer.lock().await.close(),
-        )
-        .await
-        .ok();
     }
 }
