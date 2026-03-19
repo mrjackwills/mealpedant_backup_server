@@ -1,11 +1,14 @@
+# <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.3.0'>v0.3.0</a>
+### 2026-03-19
+
 ### Chores
-+ GitHub workflow updated, [9d167430b237c3f233c968d554481331fb693d56]
++ GitHub workflow updated, [9d167430](https://github.com/mrjackwills/mealpedant_backup_server/commit/9d167430b237c3f233c968d554481331fb693d56)
 
 ### Features
-+ use async_channels, [0c2b7a9a6813bbda5fc3313de889ba4852aa42ec]
++ use async_channels, [0c2b7a9a](https://github.com/mrjackwills/mealpedant_backup_server/commit/0c2b7a9a6813bbda5fc3313de889ba4852aa42ec)
 
 ### Fixes
-+ update docker-compose.yml, [63a57c4a5798722f4a5e5d226f670de51dcf0e80]
++ update docker-compose.yml, [63a57c4a](https://github.com/mrjackwills/mealpedant_backup_server/commit/63a57c4a5798722f4a5e5d226f670de51dcf0e80)
 
 # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.2.4'>v0.2.4</a>
 ### 2025-09-24
