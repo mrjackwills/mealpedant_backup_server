@@ -1,4 +1,10 @@
-# <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.3.1'>v0.3.1</a>
+# <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.3.2'>v0.3.2</a>
+### 2026-04-28
+
+### Chores
++ dependencies updated, [6504bf7b](https://github.com/mrjackwills/mealpedant_backup_server/commit/6504bf7b52b3f45c367cd46cd09f3d4d0ed1c0b7)
+
+ # <a href='https://github.com/mrjackwills/mealpedant_backup_server/releases/tag/v0.3.1'>v0.3.1</a>
 ### 2026-03-19
 
 ### Fixes
